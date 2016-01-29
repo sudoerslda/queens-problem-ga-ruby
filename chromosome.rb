@@ -4,6 +4,7 @@ class Chromosome
   def initialize(opts = {})
     @length = opts.fetch :length, 8
     @genes = opts.fetch :genes, []
+    yield self if block_given?
   end
 
   def mutate(opts)
@@ -44,7 +45,7 @@ class Chromosome
   end
 
   # Creates a new Chromosome instance with random genes.
-  def self.new_random(length)
-    new length: length, genes: (0..(length-1)).to_a.shuffle
+  def self.new_random(length, &block)
+    new length: length, genes: (0..(length-1)).to_a.shuffle, &block
   end
 end

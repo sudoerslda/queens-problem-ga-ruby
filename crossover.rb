@@ -1,7 +1,7 @@
 class Crossover
   # This method blends two genes based on a mode and on a maximum
   # length for permutations.
-  def self.do(opts)
+  def self.perform(opts)
     case opts.fetch(:mode, :microbial)
     when :microbial
       microbial_crossover opts
