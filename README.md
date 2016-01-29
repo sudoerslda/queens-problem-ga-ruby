@@ -8,7 +8,7 @@ On a checker board of width `n` and height `n`, place `n` queens so none of thes
 could take another one. It boils down to having at most one queen per row, column
 and diagonal.
 
-Solving this problem is possible when `n` belongs to `[3..Infinity]`.
+Solving this problem is possible when `n` belongs to `[4..Infinity]`.
 
 
 ## Solution

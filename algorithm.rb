@@ -29,7 +29,7 @@ class Algorithm
 
       # Make randomized population. Because the first element will be crossed-over
       # itself, it will be kept as the first chromosome, as a way for elitism to work.
-      num_threads = 1
+      num_threads = 4
       @population = num_threads.times.map { [] }
       (@population.map { |s|
         Thread.new(s) do |slice|
