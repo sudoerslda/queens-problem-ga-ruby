@@ -13,7 +13,7 @@ class Crossover
     slave = opts[:slave]
     offspring = slave.dup
 
-    len = rand(opts[:max_len]) + 1
+    len = rand(opts[:max_len] - 1) + 1
     cross_start = rand(slave.length - len)
     cross_end = cross_start + len
     len.times.each { offspring.genes[cross_end] = master.genes[cross_end] }

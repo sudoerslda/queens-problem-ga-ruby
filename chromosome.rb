@@ -4,19 +4,16 @@ class Chromosome
   def initialize(opts = {})
     @length = opts.fetch :length, 8
     @genes = opts.fetch :genes, []
-    yield self if block_given?
   end
 
-  def mutate(opts)
-    mut = 0
-    opts[:times].times.each do
-      next unless rand(100) < opts[:chances]
-      mut += 1
-      idx1 = rand(@length)
+  # The `mutates` method tries to swap genes `count` when dices are within `chances`.
+  def mutate(count, chances)
+    count.times.each do
+      next unless rand(100) < chances
+      idx1 = rand @length
       until (idx2 = rand(@length)) != idx1; end
       @genes[idx1], @genes[idx2] = @genes[idx2], @genes[idx1]
     end
-    self
   end
 
   # Determines to what level this chromosome is fit to survive.
@@ -45,7 +42,7 @@ class Chromosome
   end
 
   # Creates a new Chromosome instance with random genes.
-  def self.new_random(length, &block)
-    new length: length, genes: (0..(length-1)).to_a.shuffle, &block
+  def self.new_random(length)
+    new length: length, genes: (0..(length-1)).to_a.shuffle
   end
 end
